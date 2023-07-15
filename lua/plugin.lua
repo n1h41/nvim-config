@@ -259,12 +259,14 @@ local plugins = {
     lazy = false,
     dependencies = {
       'nvim-lua/plenary.nvim',
-      'stevearc/dressing.nvim',   -- optional for vim.ui.select
+      'stevearc/dressing.nvim', -- optional for vim.ui.select
     },
   },
   -- Flutter Snippets
   "RobertBrunhage/flutter-riverpod-snippets",
   "Neevash/awesome-flutter-snippets",
+  -- Neodev: Used for nvim development
+  { "folke/neodev.nvim", opts = {} },
 }
 
 require('lazy').setup(plugins, {})

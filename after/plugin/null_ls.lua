@@ -4,4 +4,10 @@ if not status then
   return
 end
 
-null_ls.setup{}
+null_ls.setup{
+  sources = {
+    null_ls.builtins.formatting.dart_format,
+    null_ls.builtins.completion.luasnip,
+    null_ls.builtins.completion.spell,
+  }
+}
