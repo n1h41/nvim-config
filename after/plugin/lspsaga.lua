@@ -63,7 +63,7 @@ keymap("n", "<leader>sl", "<cmd>Lspsaga show_line_diagnostics<CR>", opts)
 keymap("n", "<leader>sb", "<cmd>Lspsaga show_buf_diagnostics<CR>", opts)
 
 -- Show workspace diagnostics
-keymap("n", "<leader>sw", "<cmd>Lspsaga show_workspace_diagnostics<CR>", opts)
+keymap("n", "<leader>sw", "<cmd>Telescope diagnostics<CR>", opts)
 
 -- Show cursor diagnostics
 keymap("n", "<leader>sc", "<cmd>Lspsaga show_cursor_diagnostics<CR>", opts)

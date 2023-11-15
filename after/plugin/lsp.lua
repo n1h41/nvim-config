@@ -147,7 +147,7 @@ flutter.setup {
     open_cmd = "tabnew",   -- command to use to open the log buffer
   },
   dev_tools = {
-    autostart = false,         -- autostart devtools server if not detected
+    autostart = true,         -- autostart devtools server if not detected
     auto_open_browser = false, -- Automatically opens devtools in the browser
   },
   outline = {
