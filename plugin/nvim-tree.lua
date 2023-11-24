@@ -1,56 +1,60 @@
 local status, nvim_tree = pcall(require, "nvim-tree")
 
 if (not status) then
-    return
+  return
 end
 
 nvim_tree.setup({
-    hijack_unnamed_buffer_when_opening = true,
-    hijack_cursor = true,
-    prefer_startup_root = true,
-    diagnostics = {
-        enable = true,
-        show_on_dirs = true,
-        show_on_open_dirs = true,
-    },
-    modified = {
-        enable = true,
-    },
-    view = {
-        width = 30,
-        adaptive_size = true,
-    },
-    update_focused_file = {
-        enable = true,
-        update_cwd = true,
-    },
-    renderer = {
-        full_name = true,
-        highlight_git = true,
-        root_folder_modifier = ":t",
-        indent_width = 3,
-        indent_markers = {
-            enable = true,
+  update_focused_file = {
+    enable = true,
+    update_cwd = true,
+  },
+  renderer = {
+    root_folder_modifier = ":t",
+    icons = {
+      git_placement = "after",
+      show = {
+        file = true,
+        folder = true,
+        git = true,
+        folder_arrow = true,
+      },
+      glyphs = {
+        git = {
+          unstaged = "U",
+          staged = "S",
+          unmerged = "UM",
+          renamed = "R",
+          untracked = "UT",
+          deleted = "D",
+          ignored = "I",
         },
-        icons = {
-            git_placement = "after",
-            show = {
-                file = true,
-                folder = true,
-                folder_arrow = true,
-                git = true,
-            }
-        }
-    },
-    actions = {
-        open_file = {
-            quit_on_open = true,
-        }
-    },
-    tab = {
-        sync = {
-            open = true,
-            close = true,
-        }
+      }
     }
+  },
+  diagnostics = {
+    enable = true,
+    show_on_dirs = true,
+    show_on_open_dirs = true,
+  },
+  modified = {
+    enable = true,
+  },
+  view = {
+    float = {
+      enable = false,
+    }
+  },
+  actions = {
+    change_dir = {
+      enable = true,
+      restrict_above_cwd = true,
+    }
+  },
+  tab = {
+    sync = {
+      open = true,
+      close = true,
+    }
+  }
 })

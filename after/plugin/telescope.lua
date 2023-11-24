@@ -21,7 +21,7 @@ telescope.setup {
         ['<C-f>'] = actions.preview_scrolling_down,
       }
     }
-  },
+  }
 }
 
 local opts = { noremap = true, silent = true }

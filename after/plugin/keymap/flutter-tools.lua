@@ -1,3 +1,36 @@
-require('telescope').load_extension('flutter')
+local status, whichKey = pcall(require, "which-key")
 
-vim.api.nvim_set_keymap('n', '<leader>fc', ':Telescope flutter commands<CR>', { noremap = true, silent = true })
+local keymap = {
+  f = {
+    name = "Flutter",
+    e = { "<cmd>FlutterEmulators<cr>", "Emulators" },
+    d = { "<cmd>FlutterDevices<cr>", "Devices" },
+    c = { "<cmd>FlutterCopyProfilerUrl<cr>", "Run" },
+    l = { "<cmd>FlutterLogClear<cr>", "Logs" },
+    q = { "<cmd>FlutterQuit<cr>", "Quit" },
+  }
+}
+
+whichKey.register(keymap, {
+  mode = 'n',
+  buffer = nil,
+  silent = true,
+  noremap = true,
+  nowait = true,
+})
+
+keymap = {
+  h = {
+    r = { "<cmd>FlutterReload<cr>", "Hot Reload" },
+    R = { "<cmd>FlutterRestart<cr>", "Hot Restart" },
+  }
+}
+
+whichKey.register(keymap, {
+  mode = 'n',
+  prefix = '<leader>',
+  buffer = nil,
+  silent = true,
+  noremap = true,
+  nowait = true,
+})

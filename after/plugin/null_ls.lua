@@ -6,7 +6,7 @@ end
 
 null_ls.setup {
     sources = {
-        null_ls.builtins.formatting.dart_format,
+        -- null_ls.builtins.formatting.dart_format,
         null_ls.builtins.formatting.csharpier,
     }
 }
