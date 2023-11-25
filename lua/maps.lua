@@ -45,3 +45,6 @@ keymap.set('n', '<C-w><down>', '<C-w>-')
 keymap.set("n", "<S-A-f>", "<cmd>lua vim.lsp.buf.format()<CR>", { noremap = true, silent = true })
 
 keymap.set("n", "<C-i>", "<C-i>", { noremap = true, silent = true })
+
+-- Copy current file name to clipboard
+keymap.set('n', '<leader>fn', ':let @+=expand("%:t")<CR>')
