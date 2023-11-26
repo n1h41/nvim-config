@@ -2,9 +2,17 @@ local status, saga = pcall(require, "lspsaga")
 if (not status) then return end
 
 saga.setup({
+  definition = {
+    edit = '<C-c>o',
+    vsplit = 'sv',
+    split = 'ss',
+    tabe = '<C-c>t',
+    quit = 'q',
+  },
   ui = {
-    winblend = 0,
     border = 'rounded',
+    incoming = '󰏷 ',
+    outgoing = '󰏻 ',
     colors = {
       normal_bg = '#002b36'
     }
@@ -12,6 +20,12 @@ saga.setup({
   lightbulb = {
     enable = false,
     enable_in_insert = false
+  },
+  outline = {
+    auto_resize = true,
+  },
+  code_action = {
+    show_server_name = true,
   }
 })
 
