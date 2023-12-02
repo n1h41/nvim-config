@@ -1,94 +1,115 @@
+---@diagnostic disable: missing-fields
 local dap = require('dap')
 local dapui = require('dapui')
 
-dap.adapters.node2 = {
+dap.adapters.dart= {
   type = 'executable',
-  command = 'node',
-  args = { '/home/n1h41/.local/share/nvim/lazy/vscode-node-debug2/out/src/nodeDebug.js' },
+  command = vim.fn.stdpath('data') .. '\\mason\\bin\\dart-debug-adapter.cmd',
+  args = { 'flutter' },
+  options = {
+    detached = false,
+  },
 }
 
-dap.adapters.dart = {
+--[[ dap.adapters.dart = {
   type = "executable",
   command = "node",
   args = { "C:/Users/nihal/Dart-Code/out/dist/debug.js", "flutter" },
   options = {
     detached = false
   }
-}
-
-dap.configurations.javascript = {
-  {
-    name = 'Launch',
-    type = 'node2',
-    request = 'launch',
-    program = '${file}',
-    cwd = vim.fn.getcwd(),
-    sourceMaps = true,
-    protocol = 'inspector',
-    console = 'integratedTerminal',
-  },
-  {
-    -- For this to work you need to make sure the node process is started with the `--inspect` flag.
-    name = 'Attach to process',
-    type = 'node2',
-    request = 'attach',
-    processId = require 'dap.utils'.pick_process,
-  }
-}
-
-dap.configurations.typescript = {
-  {
-    name = "ts-node (Node2 with ts-node)",
-    type = "node2",
-    request = "launch",
-    cwd = vim.loop.cwd(),
-    runtimeArgs = { "-r", "ts-node/register/transpile-only" },
-    runtimeExecutable = "node",
-    args = { "--inspect", "${file}" },
-    sourceMaps = true,
-    skipFiles = { "<node_internals>/**", "node_modules/**" },
-    console = 'integratedTerminal',
-  },
-  {
-    name = "Jest (Node2 with ts-node)",
-    type = "node2",
-    request = "launch",
-    cwd = vim.loop.cwd(),
-    runtimeArgs = { "--inspect-brk", "${workspaceFolder}/node_modules/.bin/jest" },
-    runtimeExecutable = "node",
-    args = { "${file}", "--runInBand", "--coverage", "false" },
-    sourceMaps = true,
-    port = 9229,
-    skipFiles = {
-      "<node_internals>/**",
-      "node_modules/**",
-    },
-    console = 'integratedTerminal',
-  },
-  {
-    type = 'node2',
-    request = 'attach',
-    name = 'Attach Program (Node2 with ts-node)',
-    cwd = vim.fn.getcwd(),
-    sourceMaps = true,
-    skipFiles = { '<node_internals>/**' },
-    port = 9229,
-  },
-}
+} ]]
 
 dap.configurations.dart = {
   {
-    type = "dart",
+    type = "flutter",
     request = "launch",
     name = "Launch flutter",
     dartSdkPath = "C:/src/flutter/bin/cache/dart-sdk/",
     flutterSdkPath = "C:/src/flutter/",
     program = "${workspaceFolder}/lib/main.dart",
     cwd = "${workspaceFolder}",
-    -- deviceId = "android-x86",
-    console = 'debugConsole',
+    console = 'externalTerminal',
+  },
+  {
+    type = 'flutter',
+    request = 'attach',
+    name = 'Attach Program',
+    dartSdkPath = "C:/src/flutter/bin/cache/dart-sdk/",
+    flutterSdkPath = "C:/src/flutter/",
+    program = "${workspaceFolder}/lib/main.dart",
+    cwd = "${workspaceFolder}",
+    console = 'externalTerminal',
   }
 }
+
+--[[ dap.adapters.node2 = {
+  type = 'executable',
+  command = 'node',
+  args = { '/home/n1h41/.local/share/nvim/lazy/vscode-node-debug2/out/src/nodeDebug.js' },
+} ]]
+
+-- dap.configurations.javascript = {
+--   {
+--     name = 'Launch',
+--     type = 'node2',
+--     request = 'launch',
+--     program = '${file}',
+--     cwd = vim.fn.getcwd(),
+--     sourceMaps = true,
+--     protocol = 'inspector',
+--     console = 'integratedTerminal',
+--   },
+--   {
+--     -- For this to work you need to make sure the node process is started with the `--inspect` flag.
+--     name = 'Attach to process',
+--     type = 'node2',
+--     request = 'attach',
+--     processId = require 'dap.utils'.pick_process,
+--   }
+-- }
+--
+-- dap.configurations.typescript = {
+--   {
+--     name = "ts-node (Node2 with ts-node)",
+--     type = "node2",
+--     request = "launch",
+--     cwd = vim.loop.cwd(),
+--     runtimeArgs = { "-r", "ts-node/register/transpile-only" },
+--     runtimeExecutable = "node",
+--     args = { "--inspect", "${file}" },
+--     sourceMaps = true,
+--     skipFiles = { "<node_internals>/**", "node_modules/**" },
+--     console = 'integratedTerminal',
+--   },
+--   {
+--     name = "Jest (Node2 with ts-node)",
+--     type = "node2",
+--     request = "launch",
+--     cwd = vim.loop.cwd(),
+--     runtimeArgs = { "--inspect-brk", "${workspaceFolder}/node_modules/.bin/jest" },
+--     runtimeExecutable = "node",
+--     args = { "${file}", "--runInBand", "--coverage", "false" },
+--     sourceMaps = true,
+--     port = 9229,
+--     skipFiles = {
+--       "<node_internals>/**",
+--       "node_modules/**",
+--     },
+--     console = 'integratedTerminal',
+--   },
+--   {
+--     type = 'node2',
+--     request = 'attach',
+--     name = 'Attach Program (Node2 with ts-node)',
+--     cwd = vim.fn.getcwd(),
+--     sourceMaps = true,
+--     skipFiles = { '<node_internals>/**' },
+--     port = 9229,
+--   },
+-- }
+
+
 
 local dap_breakpoint = {
   error = {
@@ -120,11 +141,5 @@ dapui.setup()
 dap.listeners.after.event_initialized["dapui_config"] = function()
   dapui.open({})
 end
---[[ dap.listeners.before.event_terminated["dapui_config"] = function()
-  dapui.close({})
-end
-dap.listeners.before.event_exited["dapui_config"] = function()
-  dapui.close({})
-end ]]
 
 require("telescope").load_extension("dap")
