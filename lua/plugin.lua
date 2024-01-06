@@ -270,6 +270,36 @@ local plugins = {
   -- Onedark theme
   {
     'navarasu/onedark.nvim'
+  },
+  -- Vscode theme
+  {
+    'Mofiqul/vscode.nvim'
+  },
+  -- Neotest
+  {
+    'nvim-neotest/neotest',
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+      "antoinemadec/FixCursorHold.nvim",
+      'sidlatau/neotest-dart',
+    },
+  },
+  -- Flash
+  {
+    enabled = false,
+    "folke/flash.nvim",
+    opts = {
+      search = {
+        forward = true,
+        multi_window = false,
+        wrap = false,
+        incremental = true,
+      },
+    },
+  },
+  -- DiffView
+  {
+    "sindrets/diffview.nvim"
   }
 }
 

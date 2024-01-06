@@ -2,9 +2,9 @@
 local dap = require('dap')
 local dapui = require('dapui')
 
-dap.adapters.dart= {
+dap.adapters.dart = {
   type = 'executable',
-  command = vim.fn.stdpath('data') .. '\\mason\\bin\\dart-debug-adapter.cmd',
+  command = vim.fn.stdpath('data') .. '/mason/bin/dart-debug-adapter.cmd',
   args = { 'flutter' },
   options = {
     detached = false,
@@ -138,8 +138,8 @@ vim.fn.sign_define("DapBreakpointRejected", dap_breakpoint.rejected)
 
 dapui.setup()
 
-dap.listeners.after.event_initialized["dapui_config"] = function()
+--[[ dap.listeners.after.event_initialized["dapui_config"] = function()
   dapui.open({})
-end
+end ]]
 
 require("telescope").load_extension("dap")

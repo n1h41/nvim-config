@@ -134,7 +134,7 @@ flutter.setup {
     run_via_dap = true, -- use dap instead of a plenary job to run flutter apps
     -- if empty dap will not stop on any exceptions, otherwise it will stop on those specified
     -- see |:help dap.set_exception_breakpoints()| for more info
-    exception_breakpoints = {}
+    exception_breakpoints = { "always" }
   },
   flutter_path = "C:/src/flutter/bin/flutter.bat", -- <-- this takes priority over the lookup
   fvm = false,                                     -- takes priority over path, uses <workspace>/.fvm/flutter_sdk if enabled
@@ -147,7 +147,7 @@ flutter.setup {
     open_cmd = "tabnew",   -- command to use to open the log buffer
   },
   dev_tools = {
-    autostart = true,         -- autostart devtools server if not detected
+    autostart = true,          -- autostart devtools server if not detected
     auto_open_browser = false, -- Automatically opens devtools in the browser
   },
   outline = {
@@ -155,12 +155,12 @@ flutter.setup {
     auto_open = false    -- if true this will open the outline automatically when it is first populated
   },
   lsp = {
-    color = {                                       -- show the derived colours for dart variables
-      enabled = true,                               -- whether or not to highlight color variables at all, only supported on flutter >= 2.10
-      background = true,                            -- highlight the background
+    color = {                                        -- show the derived colours for dart variables
+      enabled = true,                                -- whether or not to highlight color variables at all, only supported on flutter >= 2.10
+      background = true,                             -- highlight the background
       background_color = { r = 19, g = 17, b = 24 }, -- required, when background is transparent (i.e. background_color = { r = 19, g = 17, b = 24},)
-      foreground = false,                           -- highlight the foreground
-      virtual_text = true,                          -- show the highlight using virtual text
+      foreground = false,                            -- highlight the foreground
+      virtual_text = true,                           -- show the highlight using virtual text
       -- virtual_text_str = "■",                     -- the virtual text character to highlight
     },
     on_attach = on_attach,
@@ -170,7 +170,10 @@ flutter.setup {
     settings = {
       showTodos = true,
       completeFunctionCalls = true,
-      analysisExcludedFolders = { "<path-to-flutter-sdk-packages>" },
+      analysisExcludedFolders = {
+        "C:/Users/nihal/AppData/Local/Pub/Cache",
+        -- "C:/src/flutter",
+      },
       renameFilesWithClasses = "prompt", -- "always"
       enableSnippets = true,
       updateImportsOnRename = true,      -- Whether to update imports and other directives when files are renamed. Required for `FlutterRename` command.

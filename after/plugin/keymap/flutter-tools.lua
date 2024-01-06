@@ -8,11 +8,13 @@ local keymap = {
     c = { "<cmd>FlutterCopyProfilerUrl<cr>", "Run" },
     l = { "<cmd>FlutterLogClear<cr>", "Logs" },
     q = { "<cmd>FlutterQuit<cr>", "Quit" },
+    o = { "<cmd>FlutterOutlineOpen<cr>", "Open flutter outline" },
   }
 }
 
 whichKey.register(keymap, {
   mode = 'n',
+  prefix = '<leader>',
   buffer = nil,
   silent = true,
   noremap = true,
