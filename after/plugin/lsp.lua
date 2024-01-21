@@ -6,7 +6,7 @@ end
 
 lsp_zero.preset('recommended')
 
-lsp_zero.ensure_installed({ 'tsserver', 'eslint', 'lua_ls' })
+lsp_zero.ensure_installed({ 'tsserver', 'eslint', 'lua_ls', 'gopls' })
 
 local cmp = require('cmp')
 

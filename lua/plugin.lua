@@ -1,3 +1,4 @@
+---@diagnostic disable: missing-fields
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 
 if not vim.loop.fs_stat(lazypath) then
@@ -282,6 +283,7 @@ local plugins = {
       "nvim-lua/plenary.nvim",
       "antoinemadec/FixCursorHold.nvim",
       'sidlatau/neotest-dart',
+      "nvim-neotest/neotest-go",
     },
   },
   -- Flash

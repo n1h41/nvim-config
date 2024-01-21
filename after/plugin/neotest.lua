@@ -4,6 +4,7 @@ require("neotest").setup({
     require("neotest-dart")({
       command = "flutter",
       use_lsp = true,
-    })
+    }),
+    require("neotest-go"),
   }
 })
