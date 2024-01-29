@@ -104,36 +104,21 @@ vim.diagnostic.config({
 
 local flutter = require('flutter-tools')
 
--- alternatively you can override the default configs
 flutter.setup {
   ui = {
-    -- the border type to use for all floating windows, the same options/formats
-    -- used for ":h nvim_open_win" e.g. "single" | "shadow" | {<table-of-eight-chars>}
     border = "rounded",
-    -- This determines whether notifications are show with `vim.notify` or with the plugin's custom UI
-    -- please note that this option is eventually going to be deprecated and users will need to
-    -- depend on plugins like `nvim-notify` instead.
     notification_style = 'plugin'
   },
   decorations = {
     statusline = {
-      -- set to true to be able use the 'flutter_tools_decorations.app_version' in your statusline
-      -- this will show the current version of the flutter app from the pubspec.yaml file
       app_version = true,
-      -- set to true to be able use the 'flutter_tools_decorations.device' in your statusline
-      -- this will show the currently running device if an application was started with a specific
-      -- device
       device = true,
-      -- set to true to be able use the 'flutter_tools_decorations.project_config' in your statusline
-      -- this will show the currently selected project configuration
       project_config = true,
     }
   },
   debugger = {          -- integrate with nvim dap + install dart code debugger
     enabled = false,
     run_via_dap = true, -- use dap instead of a plenary job to run flutter apps
-    -- if empty dap will not stop on any exceptions, otherwise it will stop on those specified
-    -- see |:help dap.set_exception_breakpoints()| for more info
     exception_breakpoints = { "always" }
   },
   flutter_path = "C:/src/flutter/bin/flutter.bat", -- <-- this takes priority over the lookup
@@ -161,18 +146,14 @@ flutter.setup {
       background_color = { r = 19, g = 17, b = 24 }, -- required, when background is transparent (i.e. background_color = { r = 19, g = 17, b = 24},)
       foreground = false,                            -- highlight the foreground
       virtual_text = true,                           -- show the highlight using virtual text
-      -- virtual_text_str = "■",                     -- the virtual text character to highlight
     },
     on_attach = on_attach,
     capabilities = capabilities, -- e.g. lsp_status capabilities
-    -- see the link below for details on each option:
-    -- https://github.com/dart-lang/sdk/blob/master/pkg/analysis_server/tool/lsp_spec/README.md#client-workspace-configuration
     settings = {
       showTodos = true,
       completeFunctionCalls = true,
       analysisExcludedFolders = {
         "C:/Users/nihal/AppData/Local/Pub/Cache",
-        -- "C:/src/flutter",
       },
       renameFilesWithClasses = "prompt", -- "always"
       enableSnippets = true,

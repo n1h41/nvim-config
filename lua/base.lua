@@ -79,3 +79,6 @@ vim.opt.fillchars = {
     eob = ' ',
     msgsep = '‾',
 }
+
+-- Turn on vim exrc
+vim.o.exrc = true

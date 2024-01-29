@@ -30,6 +30,7 @@ dap.configurations.dart = {
     program = "${workspaceFolder}/lib/main.dart",
     cwd = "${workspaceFolder}",
     console = 'externalTerminal',
+    sourceMaps = true,
   },
   {
     type = 'flutter',
@@ -40,6 +41,7 @@ dap.configurations.dart = {
     program = "${workspaceFolder}/lib/main.dart",
     cwd = "${workspaceFolder}",
     console = 'externalTerminal',
+    sourceMaps = true,
   }
 }
 

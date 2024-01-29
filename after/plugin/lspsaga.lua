@@ -6,7 +6,6 @@ saga.setup({
     edit = '<C-c>o',
     vsplit = 'sv',
     split = 'ss',
-    tabe = '<C-c>t',
     quit = 'q',
   },
   ui = {
