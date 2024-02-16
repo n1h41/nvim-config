@@ -2,6 +2,15 @@
 local dap = require('dap')
 local dapui = require('dapui')
 
+--[[ dap.adapters.dart = {
+  type = 'executable',
+  command = "flutter",
+  args = { '-v', 'debug_adapter' },
+  options = {
+    detached = false,
+  },
+} ]]
+
 dap.adapters.dart = {
   type = 'executable',
   command = vim.fn.stdpath('data') .. '/mason/bin/dart-debug-adapter.cmd',

@@ -18,6 +18,7 @@ ts.setup {
     "yaml",
     "go",
     "dart",
+    "lua",
   },
   autotag = {
     enable = true,
