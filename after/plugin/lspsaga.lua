@@ -3,6 +3,7 @@ if (not status) then return end
 
 saga.setup({
   definition = {
+    tabe = 't',
     edit = '<C-c>o',
     vsplit = 'sv',
     split = 'ss',
